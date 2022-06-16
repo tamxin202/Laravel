@@ -8,6 +8,9 @@ class PageController extends Controller
 {
     //
     public function getIndex(){
-        return view ('master');
+        return view ('page.trangchu');
+    }
+    public function getLoaiSp(){
+        return view('page.loai_sanpham');
     }
 }

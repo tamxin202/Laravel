@@ -14,6 +14,8 @@ use App\Http\Requests\Signup;
 //     'App\Http\Controllers\UserController@getIndex'
 // );
 
+Route::get('typeofProduct',[PageController::class,'getLoaiSp']);
+
 Route::get('ad',[PageController::class,'getIndex']);
 Route::get('admin', function () {
     return view('adminpage');
