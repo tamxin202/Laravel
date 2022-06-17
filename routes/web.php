@@ -7,13 +7,28 @@ use App\Http\Controllers\signupController;
 use App\Http\Controllers\Authentication;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\CreateTableController;
 use App\Http\Requests\Signup;
+use App\Console\Commands\mys;
+use Illuminate\Support\Facades\Schema;
 
 // Route::get(
 //     '/',
 //     'App\Http\Controllers\UserController@getIndex'
 // );
+// Route::get('database', function () {
 
+//     Schema::create('Productss', function ($table) {
+//         $table->increments('id');
+//         $table->string('name');
+//         $table->string('image');
+//         $table->string('description');
+//         $table->integer('quantity');
+//         $table->datetime('date');
+//     });
+//    echo "Tạo Bảng thành công";
+// });
+Route::get('dataProducts',[CreateTableController::class,'productUser']);
 Route::get('typeofProduct',[PageController::class,'getLoaiSp']);
 
 Route::get('ad',[PageController::class,'getIndex']);
