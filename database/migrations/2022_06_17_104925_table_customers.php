@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('image');
             $table->string('description');
             $table->integer('quantity');
-            $table->datetime('date');
+            $table->date('date');
         });
         //
     }
