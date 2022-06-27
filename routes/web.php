@@ -8,8 +8,11 @@ use App\Http\Controllers\Authentication;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\CreateTableController;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\Signup;
 use App\Console\Commands\mys;
+use App\Http\Controllers\FormController;
+use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Schema;
 
 // Route::get(
@@ -28,16 +31,33 @@ use Illuminate\Support\Facades\Schema;
 //     });
 //    echo "Tạo Bảng thành công";
 // });
-Route::get('dataProducts',[CreateTableController::class,'productUser']);
-Route::get('typeofProduct',[PageController::class,'getLoaiSp']);
+// Route::get('dataProducts',[CreateTableController::class,'productUser']);
+// Route::get('typeofProduct',[PageController::class,'getLoaiSp']);
 
-Route::get('ad',[PageController::class,'getIndex']);
-Route::get('admin', function () {
-    return view('adminpage');
+// Route::get('ad',[PageController::class,'getIndex']);
+Route::get('/form',[FormController::class,'getIndex']);
+Route::get('/type/{id}',[FormController::class,'getLoaiSp']);
+Route::get('form_admin_add',[FormController::class,'getAdminAdd'])->name('add_product');
+Route::post('form_admin_add',[FormController::class,'postAdminAdd'])->name('admin-add-form');
+//Route::post('/admin',[PageController::class,'postAdminAdd'])->name('admin-add-form');
+Route::get('/showadmin',[FormController::class, 'getIndexAdmin']);
+
+
+Route::get('/admin-edit-form/{id}',[FormController::class,'getAdminEdit']);
+Route::post('/admin-edit',[FormController::class,'postAdminEdit']);
+Route::post('/admin-delete/{id}',[FormController::class,'postAdminDelete']);
+Route::get('trangchinh',[PagesController::class,'getIndex']);
+Route::get('truy van', function () {
+    $data=DB::table('Productss')->orderBy('name','desc')->get();
+    print_r($data);
+});
+Route::get('truytim', function () {
+    $data=DB::table('Productss')->find(3);
+    print_r($data);
 });
 
-Route::get('admin',[AdminController::class,'index']);
-Route::post('admin',[AdminController::class,'addRoom']);
+Route::get('admin',[PageController::class,'index']);
+Route::post('admin',[PageController::class,'addRooms']);
 
 
 Route::group(['prefix' => 'admin'], function () {

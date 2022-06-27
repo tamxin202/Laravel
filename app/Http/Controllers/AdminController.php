@@ -10,7 +10,7 @@ class AdminController extends Controller
     {
         return view('adminpage');
     }
-    public function addRoom(HotelRequest $Request)
+    public function addRooms(HotelRequest $Request)
     {
         // $target_dir = "images/";
         // $target_file = $target_dir . basename($_FILES["roomImage"]["name"]);
@@ -43,6 +43,6 @@ class AdminController extends Controller
             $_SESSION['rooms'][] = $newRoom;
         }
         echo '<script>alert("Thêm phòng thành công")</script>';
-        return view('adminpage');
+        return view('adminpage')->with('newRoom',$newRoom);
     }//
 }

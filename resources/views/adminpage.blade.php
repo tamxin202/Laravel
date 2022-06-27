@@ -65,6 +65,14 @@
   <div>
     @include ('error')
   </div>
+  <div>
+    @if(isset($newRoom))
+    <p>Name: {{$newRoom['name']}}</p>
+    <p>Description: {{$newRoom['description']}}</p>
+    <p>Price: {{$newRoom['price']}}</p>
+    <p>Image: {{$newRoom['image']}}</p>
+    <img src="{{$newRoom['image']}}" alt="">
+    @endif
+  </div>
 </body>
-
 </html>
