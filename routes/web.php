@@ -35,12 +35,13 @@ use Illuminate\Support\Facades\Schema;
 // Route::get('typeofProduct',[PageController::class,'getLoaiSp']);
 
 // Route::get('ad',[PageController::class,'getIndex']);
-Route::get('/form',[FormController::class,'getIndex']);
+Route::get('/trangchu',[FormController::class,'getIndex']);
 Route::get('/type/{id}',[FormController::class,'getLoaiSp']);
 Route::get('form_admin_add',[FormController::class,'getAdminAdd'])->name('add_product');
 Route::post('form_admin_add',[FormController::class,'postAdminAdd'])->name('admin-add-form');
 //Route::post('/admin',[PageController::class,'postAdminAdd'])->name('admin-add-form');
 Route::get('/showadmin',[FormController::class, 'getIndexAdmin']);
+Route::get('/detail/{id}',[FormController::class, 'getDetail']);
 
 
 Route::get('/admin-edit-form/{id}',[FormController::class,'getAdminEdit']);

@@ -5,6 +5,7 @@ use App\Jobs\SendEmail;
 use App\Models\Slide;
 use App\Models\ProductType;
 use App\Models\Product;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Date;
 use App\Providers\AppServiceProvider;
@@ -95,7 +96,12 @@ class FormController extends Controller
         $product->delete();
         return redirect('/showadmin');
 }
-
+public function getDetail(Request $request){
+    $sanpham = product::where('id',$request->id)->first();
+    $splienquan = product::where('id','<>',$sanpham->id,'and','id_type','=',$sanpham->id_type)->paginate(3);
+    $comments = Comment::where('id_product',$request->id)->get();
+    return view('page.Detail',compact('sanpham','splienquan','comments'));
+}
 
 
 
